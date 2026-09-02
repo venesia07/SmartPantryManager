@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_ingredient_title"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <EditText
+        android:id="@+id/editTextIngredientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ingredient_name"
+        android:inputType="textCapWords"
+        android:importantForAutofill="no"/>
+
+    <EditText
+        android:id="@+id/editTextQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/quantity"
+        android:inputType="numberDecimal"
+        android:importantForAutofill="no"/>
+
+    <EditText
+        android:id="@+id/editTextUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/unit"
+        android:inputType="text"
+        android:importantForAutofill="no"/>
+
+    <EditText
+        android:id="@+id/editTextExpiryDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/expiry_date"
+        android:inputType="date"
+        android:importantForAutofill="no"/>
+
+    <Button
+        android:id="@+id/btnSaveIngredient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/save_ingredient" />
+
+</LinearLayout>

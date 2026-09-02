@@ -3,4 +3,11 @@
     <string name="smart_pantry">Smart Pantry</string>
     <string name="your_pantry">Your Pantry</string>
     <string name="add_ingredient">Add Ingredient</string>
+    <string name="add_ingredient_title">Add Ingredient</string>
+    <string name="ingredient_name">Ingredient Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="unit">Unit</string>
+    <string name="expiry_date">Expiry Date (Optional)</string>
+    <string name="save_ingredient">Save Ingredient</string>
+
 </resources>
