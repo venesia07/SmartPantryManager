@@ -45,13 +45,16 @@
         android:layout_height="wrap_content"
         android:hint="@string/expiry_date"
         android:inputType="date"
-        android:importantForAutofill="no"/>
+        android:importantForAutofill="no"
+        />
 
     <Button
         android:id="@+id/btnSaveIngredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/save_ingredient" />
+        android:text="@string/save_ingredient"
+        android:focusable="false"
+        android:clickable="true"/>
 
 </LinearLayout>
