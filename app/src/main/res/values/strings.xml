@@ -10,5 +10,11 @@
     <string name="expiry_date">Expiry Date (Optional)</string>
     <string name="save_ingredient">Save Ingredient</string>
     <string name="refresh_pantry">Refresh Pantry</string>
-
+    <string name="pantry_subtitle">Keep your kitchen organised</string>
+    <string name="pantry_section_description">Ingredients currently in your pantry</string>
+    <string name="add_ingredient_subtitle">Add an item to your pantry</string>
+    <string name="ingredient_name_hint">e.g. Flour</string>
+    <string name="quantity_hint">e.g. 2.5</string>
+    <string name="unit_hint">e.g. kg, g, ml, pieces</string>
+    <string name="expiry_date_hint">Tap to select a date</string>
 </resources>
