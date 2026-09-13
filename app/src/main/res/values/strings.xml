@@ -17,4 +17,6 @@
     <string name="quantity_hint">e.g. 2.5</string>
     <string name="unit_hint">e.g. kg, g, ml, pieces</string>
     <string name="expiry_date_hint">Tap to select a date</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>
