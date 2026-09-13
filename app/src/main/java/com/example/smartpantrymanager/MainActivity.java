@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         databaseHelper =
                 new DatabaseHelper(MainActivity.this);
 
+        databaseHelper.seedRecipes();
+
         recyclerViewPantry.setLayoutManager(
                 new LinearLayoutManager(MainActivity.this)
         );
@@ -82,12 +84,5 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewPantry.setAdapter(pantryItemList);
     }
 
-    /*@Override
-    protected void onResume() {
-        super.onResume();
 
-        if (databaseHelper != null) {
-            loadPantryItems();
-        }
-    }*/
 }
