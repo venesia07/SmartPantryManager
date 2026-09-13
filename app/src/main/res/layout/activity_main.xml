@@ -34,4 +34,11 @@
         android:layout_height="wrap_content"
         android:text="@string/add_ingredient" />
 
+    <Button
+        android:id="@+id/btnRefreshPantry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/refresh_pantry" />
+
 </LinearLayout>

@@ -9,5 +9,6 @@
     <string name="unit">Unit</string>
     <string name="expiry_date">Expiry Date (Optional)</string>
     <string name="save_ingredient">Save Ingredient</string>
+    <string name="refresh_pantry">Refresh Pantry</string>
 
 </resources>

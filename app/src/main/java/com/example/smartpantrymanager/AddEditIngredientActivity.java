@@ -93,11 +93,37 @@ public class AddEditIngredientActivity extends AppCompatActivity {
                 return;
             }
 
-            Toast.makeText(
-                    AddEditIngredientActivity.this,
-                    "Ingredient details are valid",
-                    Toast.LENGTH_SHORT
-            ).show();
+            Ingredient ingredient = new Ingredient(
+                    name,
+                    quantity,
+                    unit,
+                    expiryDate
+            );
+
+            DatabaseHelper databaseHelper =
+                    new DatabaseHelper(AddEditIngredientActivity.this);
+
+            long result = databaseHelper.addIngredient(ingredient);
+
+            if (result != -1) {
+
+                Toast.makeText(
+                        AddEditIngredientActivity.this,
+                        "Ingredient saved successfully",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                finish();
+
+            } else {
+
+                Toast.makeText(
+                        AddEditIngredientActivity.this,
+                        "Failed to save ingredient",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
