@@ -71,6 +71,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT
             ).show();
         });
+
+        Button btnSuggestedRecipes =
+                findViewById(R.id.btnSuggestedRecipes);
+
+        btnSuggestedRecipes.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    SuggestedRecipesActivity.class
+            );
+
+            startActivity(intent);
+        });
     }
 
     private void loadPantryItems() {

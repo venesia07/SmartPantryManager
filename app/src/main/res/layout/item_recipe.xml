@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_ingredient_card"
+    android:padding="18dp"
+    android:layout_marginBottom="12dp"
+    android:elevation="2dp">
+
+    <TextView
+        android:id="@+id/textViewRecipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scrambled Eggs"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textColor="@color/pantry_text_primary" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All ingredients available"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/pantry_green"
+        android:layout_marginTop="5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/pantry_border"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/textViewRecipeInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Beat the eggs and cook in a pan..."
+        android:textSize="14sp"
+        android:textColor="@color/pantry_text_secondary"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+</LinearLayout>
