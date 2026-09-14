@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import android.content.Intent;
 
 public class RecipeList extends RecyclerView.Adapter<RecipeList.RecipeViewHolder> {
 
@@ -45,6 +46,31 @@ public class RecipeList extends RecyclerView.Adapter<RecipeList.RecipeViewHolder
         holder.textViewRecipeInstructions.setText(
                 recipe.getInstructions()
         );
+
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    v.getContext(),
+                    RecipeDetailActivity.class
+            );
+
+            intent.putExtra(
+                    "recipe_id",
+                    recipe.getId()
+            );
+
+            intent.putExtra(
+                    "recipe_name",
+                    recipe.getName()
+            );
+
+            intent.putExtra(
+                    "recipe_instructions",
+                    recipe.getInstructions()
+            );
+
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
