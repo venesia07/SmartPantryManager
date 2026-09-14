@@ -721,7 +721,165 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
     }
 
+    private String normalizeIngredientName(String name) {
 
+        if (name == null) {
+            return "";
+        }
 
+        name = name.trim().toLowerCase();
+
+        if (name.endsWith("ies")) {
+            name = name.substring(0, name.length() - 3) + "y";
+        }
+        else if (name.endsWith("oes")) {
+            name = name.substring(0, name.length() - 2);
+        }
+        else if (name.endsWith("s") && name.length() > 1) {
+            name = name.substring(0, name.length() - 1);
+        }
+
+        return name;
+    }
+
+    private boolean pantryHasEnough(
+            String requiredName,
+            double requiredQuantity,
+            String requiredUnit) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT name, quantity, unit FROM pantry_items",
+                null
+        );
+
+        boolean hasEnough = false;
+
+        while (cursor.moveToNext()) {
+
+            String pantryName =
+                    cursor.getString(
+                            cursor.getColumnIndexOrThrow("name")
+                    );
+
+            double pantryQuantity =
+                    cursor.getDouble(
+                            cursor.getColumnIndexOrThrow("quantity")
+                    );
+
+            String pantryUnit =
+                    cursor.getString(
+                            cursor.getColumnIndexOrThrow("unit")
+                    );
+
+            String normalPantryName =
+                    normalizeIngredientName(pantryName);
+
+            String normalRequiredName =
+                    normalizeIngredientName(requiredName);
+
+            if (normalPantryName.equals(normalRequiredName)
+                    && pantryUnit.trim().equalsIgnoreCase(requiredUnit.trim())
+                    && pantryQuantity >= requiredQuantity) {
+
+                hasEnough = true;
+                break;
+            }
+        }
+
+        cursor.close();
+
+        return hasEnough;
+    }
+    private boolean canMakeRecipe(int recipeId) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT ingredient_name, quantity, unit " +
+                        "FROM recipe_ingredients " +
+                        "WHERE recipe_id = ?",
+                new String[]{String.valueOf(recipeId)}
+        );
+
+        boolean canMake = true;
+
+        while (cursor.moveToNext()) {
+
+            String ingredientName =
+                    cursor.getString(
+                            cursor.getColumnIndexOrThrow("ingredient_name")
+                    );
+
+            double requiredQuantity =
+                    cursor.getDouble(
+                            cursor.getColumnIndexOrThrow("quantity")
+                    );
+
+            String requiredUnit =
+                    cursor.getString(
+                            cursor.getColumnIndexOrThrow("unit")
+                    );
+
+            if (!pantryHasEnough(
+                    ingredientName,
+                    requiredQuantity,
+                    requiredUnit)) {
+
+                canMake = false;
+                break;
+            }
+        }
+
+        cursor.close();
+
+        return canMake;
+    }
+
+    public ArrayList<Recipe> getSuggestedRecipes() {
+
+        ArrayList<Recipe> suggestedRecipes = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT id, name, instructions FROM recipes",
+                null
+        );
+
+        while (cursor.moveToNext()) {
+
+            int recipeId =
+                    cursor.getInt(
+                            cursor.getColumnIndexOrThrow("id")
+                    );
+
+            String recipeName =
+                    cursor.getString(
+                            cursor.getColumnIndexOrThrow("name")
+                    );
+
+            String instructions =
+                    cursor.getString(
+                            cursor.getColumnIndexOrThrow("instructions")
+                    );
+
+            if (canMakeRecipe(recipeId)) {
+
+                Recipe recipe = new Recipe(
+                        recipeId,
+                        recipeName,
+                        instructions
+                );
+
+                suggestedRecipes.add(recipe);
+            }
+        }
+
+        cursor.close();
+
+        return suggestedRecipes;
+    }
 
 }
