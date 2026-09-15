@@ -63,6 +63,37 @@ The application consists of the following main screens:
 4. Recipe Detail – Displays the ingredients and instructions for a selected recipe.
 5. Settings – Displays application and profile information.
 
+Application Screenshots
+
+1. Pantry Home Screen
+The Pantry screen displays all ingredients currently stored by the user and provides access to pantry management functions.
+<img src="screenshots/HomeScreen.png" width="300" alt="Smart Pantry Manager Home Screen">
+
+2. Add Ingredient
+Users can add a new ingredient by entering its name, quantity, unit, and optional expiry date.
+<img src="screenshots/AddIngredientScreen.png" width="300" alt="Add Ingredient Screen">
+
+3. Edit Ingredient
+Existing pantry ingredients can be updated when quantities, units, or expiry dates change.
+<img src="screenshots/EditIngredientScreen.png" width="300" alt="Edit Ingredient Screen">
+
+4. Delete Ingredient
+Ingredients can be removed from the pantry using the delete functionality and confirmation dialog.
+<img src="screenshots/DeleteIngredientScreen.png" width="300" alt="Delete Ingredient Screen">
+
+5. Suggested Recipes
+Only recipes for which all required ingredients are available in sufficient quantities are displayed.
+<img src="screenshots/SuggestedRecipesScreen.png" width="300" alt="Suggested Recipes Screen">
+
+6. Recipe Detail
+Selecting a suggested recipe displays its required ingredients and cooking instructions.
+<img src="screenshots/RecipeDetailScreen.png" width="300" alt="Recipe Detail Screen">
+
+7. Settings
+The Settings screen provides basic profile and application information.
+<img src="screenshots/SettingsScreen.png" width="300" alt="Settings Screen">
+
+
 Database
 Smart Pantry Manager uses a local SQLite database.
 
