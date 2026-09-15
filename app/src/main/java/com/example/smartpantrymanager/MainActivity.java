@@ -84,6 +84,32 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+
+        Button navRecipes =
+                findViewById(R.id.navRecipes);
+
+        Button navSettings =
+                findViewById(R.id.navSettings);
+
+        navRecipes.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    SuggestedRecipesActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+        navSettings.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    SettingsActivity.class
+            );
+
+            startActivity(intent);
+        });
     }
 
     private void loadPantryItems() {

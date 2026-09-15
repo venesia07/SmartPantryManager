@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
+import android.widget.Button;
+
 public class SuggestedRecipesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewRecipes;
@@ -50,6 +53,29 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         );
 
         loadSuggestedRecipes();
+
+        Button navPantry = findViewById(R.id.navPantry);
+        Button navSettings = findViewById(R.id.navSettings);
+
+        navPantry.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    SuggestedRecipesActivity.this,
+                    MainActivity.class
+            );
+
+            startActivity(intent);
+            finish();
+        });
+
+        navSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    SuggestedRecipesActivity.this,
+                    SettingsActivity.class
+            );
+
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void loadSuggestedRecipes() {
