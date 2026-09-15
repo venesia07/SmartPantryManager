@@ -742,6 +742,88 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return name;
     }
 
+    private double convertToBaseUnit(double quantity, String unit) {
+
+        if (unit == null) {
+            return quantity;
+        }
+
+        unit = unit.trim().toLowerCase();
+
+        switch (unit) {
+
+            case "kg":
+            case "kilogram":
+            case "kilograms":
+                return quantity * 1000;
+
+            case "g":
+            case "gram":
+            case "grams":
+                return quantity;
+
+            case "l":
+            case "litre":
+            case "litres":
+            case "liter":
+            case "liters":
+                return quantity * 1000;
+
+            case "ml":
+            case "millilitre":
+            case "millilitres":
+            case "milliliter":
+            case "milliliters":
+                return quantity;
+
+            default:
+                return quantity;
+        }
+    }
+
+    private String normalizeUnit(String unit) {
+
+        if (unit == null) {
+            return "";
+        }
+
+        unit = unit.trim().toLowerCase();
+
+        switch (unit) {
+
+            case "kg":
+            case "kilogram":
+            case "kilograms":
+            case "g":
+            case "gram":
+            case "grams":
+                return "weight";
+
+            case "l":
+            case "litre":
+            case "litres":
+            case "liter":
+            case "liters":
+            case "ml":
+            case "millilitre":
+            case "millilitres":
+            case "milliliter":
+            case "milliliters":
+                return "volume";
+
+            case "piece":
+            case "pieces":
+                return "pieces";
+
+            case "slice":
+            case "slices":
+                return "slices";
+
+            default:
+                return unit;
+        }
+    }
+
     private boolean pantryHasEnough(
             String requiredName,
             double requiredQuantity,
@@ -779,9 +861,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String normalRequiredName =
                     normalizeIngredientName(requiredName);
 
+            String normalPantryUnit =
+                    normalizeUnit(pantryUnit);
+
+            String normalRequiredUnit =
+                    normalizeUnit(requiredUnit);
+
+            double convertedPantryQuantity =
+                    convertToBaseUnit(
+                            pantryQuantity,
+                            pantryUnit
+                    );
+
+            double convertedRequiredQuantity =
+                    convertToBaseUnit(
+                            requiredQuantity,
+                            requiredUnit
+                    );
+
             if (normalPantryName.equals(normalRequiredName)
-                    && pantryUnit.trim().equalsIgnoreCase(requiredUnit.trim())
-                    && pantryQuantity >= requiredQuantity) {
+                    && normalPantryUnit.equals(normalRequiredUnit)
+                    && convertedPantryQuantity >= convertedRequiredQuantity) {
 
                 hasEnough = true;
                 break;
