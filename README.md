@@ -87,7 +87,7 @@ Only recipes for which all required ingredients are available in sufficient quan
 
 6. Recipe Detail
 Selecting a suggested recipe displays its required ingredients and cooking instructions.
-<img src="screenshots/RecipeDetailScreen.png" width="300" alt="Recipe Detail Screen">
+<img src="screenshots/RecipeDetailsScreen.png" width="300" alt="Recipe Detail Screen">
 
 7. Settings
 The Settings screen provides basic profile and application information.
